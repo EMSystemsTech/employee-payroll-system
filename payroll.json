@@ -1,0 +1,28 @@
+[
+    {
+        "payroll_id": 1,
+        "check_number": "001",
+        "employee_id": 1001,
+        "name": "Maximillian Peace",
+        "hourly_wage": 50.0,
+        "hours_worked": 45.0,
+        "regular_hours": 40,
+        "overtime_hours": 5.0,
+        "gross_pay": 2375.0,
+        "deductions": 612.51,
+        "net_pay": 1762.49
+    },
+    {
+        "payroll_id": 2,
+        "check_number": "002",
+        "employee_id": 1002,
+        "name": "Ian Peace",
+        "hourly_wage": 55.25,
+        "hours_worked": 38.0,
+        "regular_hours": 38.0,
+        "overtime_hours": 0,
+        "gross_pay": 2099.5,
+        "deductions": 541.46,
+        "net_pay": 1558.04
+    }
+]
