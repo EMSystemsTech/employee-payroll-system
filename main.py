@@ -4,13 +4,17 @@ from services.payroll_service import (
     load_payroll,
     process_payroll,
     get_payroll_by_id,
-    get_payroll_by_check_number)
+    get_payroll_by_check_number,
+    update_payroll_hours)
 
 app = FastAPI()
 
 class PayrollInput(BaseModel):
     employee_id: int
     hours_worked: float
+
+class PayrollUpdate(BaseModel):
+    hours_worked:float
     
 @app.get("/")
 def home():
@@ -38,6 +42,15 @@ def find_payroll_by_check_number(check_number: str):
 
     if payroll_record:
         return payroll_record
+
+    return {"message": "Payroll record not found"}
+
+@app.patch("/payroll/id/{payroll_id}")
+def patch_payroll_hours(payroll_id: int, payroll_update: PayrollUpdate):
+    updated_payroll = update_payroll_hours(payroll_id, payroll_update.hours_worked)
+
+    if updated_payroll:
+        return{"message": "Payroll record updated successfull", "payroll": updated_payroll}
 
     return {"message": "Payroll record not found"}
 

@@ -150,4 +150,32 @@ def process_payroll(employee_id, hours_worked):
 
     return payroll_record
 
+def update_payroll_hours(payroll_id, hours_worked):
+    payroll_records = load_payroll()
 
+    for payroll in payroll_records:
+        if payroll["payroll_id"] == payroll_id:
+            employee = get_employee_by_id(payroll["employee_id"])
+
+            if employee is None:
+                return None
+
+            hourly_wage = employee["hourly_wage"]
+
+            payroll["hours_worked"] = hours_worked
+            payroll["regular_hours"] = calculate_regular_hours(hours_worked)
+            payroll["overtime_hours"] = calculate_overtime_hours(hours_worked)
+
+            gross_pay = calculate_gross_pay(hours_worked, hourly_wage)
+            deductions = calculate_deductions(gross_pay)
+            net_pay = calculate_net_pay(gross_pay, deductions)
+
+            payroll["gross_pay"] = round(gross_pay, 2)
+            payroll["deductions"] = deductions
+            payroll["net_pay"] = round(net_pay, 2)
+
+            save_payroll(payroll_records)
+
+            return payroll
+
+    return None
