@@ -1,6 +1,10 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from services.payroll_service import (load_payroll, process_payroll)
+from services.payroll_service import (
+    load_payroll,
+    process_payroll,
+    get_payroll_by_id,
+    get_payroll_by_check_number)
 
 app = FastAPI()
 
@@ -25,6 +29,15 @@ def get_payroll_by_id(payroll_id: int):
     for record in payroll:
         if record["payroll_id"] == payroll_id:
             return record
+
+    return {"message": "Payroll record not found"}
+
+@app.get("/payroll/check/{check_number}")
+def find_payroll_by_check_number(check_number: str):
+    payroll_record = get_payroll_by_check_number(check_number)
+
+    if payroll_record:
+        return payroll_record
 
     return {"message": "Payroll record not found"}
 

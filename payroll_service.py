@@ -118,6 +118,23 @@ def get_employee_by_id(employee_id):
 
     return None
 
+def get_payroll_by_check_number(check_number):
+    payroll_records = load_payroll()
+
+    for payroll in payroll_records:
+        if payroll["check_number"] == check_number:
+            return payroll
+
+    return None
+
+def get_payroll_by_id(payroll_id):
+    payroll_records = load_payroll()
+
+    for payroll in payroll_records:
+        if payroll["payroll_id"] == payroll_id:
+            return payroll
+
+        return None
 
 def process_payroll(employee_id, hours_worked):
     payroll = load_payroll()
