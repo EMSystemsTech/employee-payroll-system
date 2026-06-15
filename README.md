@@ -152,5 +152,4 @@ To keep the public repository focused on payroll functionality, only the Payroll
 * Cross-module API communication
 * HRMS SaaS platform expansion
 
-```
-```
+
