@@ -1,99 +1,103 @@
-Employee Payroll System
+# Employee Payroll System
 
-Overview
+## Overview
 
-This project is a Java-based payroll processing system designed to demonstrate employee data management, financial calculations, operational workflows, and structured backend processing logic.
+This project demonstrates the evolution of a payroll processing application from a traditional Java console program into a modern FastAPI backend service.
 
-The application allows users to enter employee payroll information, calculate overtime pay, process tax deductions, and generate formatted payroll summaries using structured data handling and workflow-based programming techniques.
+The original application was designed to manage employee payroll calculations, overtime processing, tax deductions, and payroll summaries using structured business logic and operational workflows.
 
----
-
-Features
-
-- Employee payroll processing
-- Overtime pay calculations
-- Tax deduction calculations
-- Employee data management
-- Nested data structure handling
-- Currency formatting
-- Structured workflow processing
-- Console-based user interaction
+The project was later refactored into a RESTful API architecture to support automation, service integration, data persistence, and future Human Resource Management System (HRMS) expansion.
 
 ---
 
-Technologies Used
+# Original Java Payroll System
 
-- Java
-- ArrayList
-- ListIterator
-- Scanner Input Handling
-- NumberFormat
-- Conditional Logic
-- Loops & Iteration
+## Features
+
+* Employee payroll processing
+* Overtime pay calculations
+* Tax deduction calculations
+* Employee data management
+* Nested data structure handling
+* Currency formatting
+* Structured workflow processing
+* Console-based user interaction
+
+## Technologies Used
+
+* Java
+* ArrayList
+* ListIterator
+* Scanner
+* NumberFormat
+* Conditional Logic
+* Loops and Iteration
+
+## Project Structure
+
+```text
+CalculatePayProgram5App.java
+```
+
+### Purpose
+
+This project was originally created to demonstrate payroll processing, financial calculations, workflow automation, and structured business application development using Java.
 
 ---
 
-Project Structure
+# FastAPI Payroll Refactor
 
-- "CalculatePayProgram5App.java" → Main payroll processing and employee management application
+## Overview
 
----
+The original Java payroll application was refactored into a FastAPI backend service to demonstrate modern API development, backend automation, service-oriented design, and payroll processing workflows.
 
-Concepts Demonstrated
+The refactored solution uses employee_id as a reference to employee records maintained by the Employee Management System (EMS).
 
-This project demonstrates several foundational software engineering and operational systems concepts:
+For portfolio and open-source demonstration purposes, this repository includes a local employee data file used during development and testing.
 
-- Payroll calculation logic
-- Financial processing workflows
-- Nested data structures
-- Employee data management
-- Operational backend processing
-- Workflow automation logic
-- Input handling
-- Structured program design
+## Current Features
 
----
+### Payroll Processing
 
-Purpose
-
-This project was created as part of a systems design and programming learning journey focused on building operational business applications and workflow-oriented backend systems using Java.
-
-
-## Payroll FastAPI Refactor
-
-This project refactors the original Java console-based payroll program into a FastAPI backend service. The original version required users to manually enter employee name, hours worked, and pay rate. The refactored version uses `employee_id` as a foreign-key style reference to the Employee Management System data.
-
-Payroll currently references EMS employee data.
-For local testing a copy of employees.json was used.
-Future versions will connect directly to EMS services.
-
-### Current Features
-
-* FastAPI backend
-* Swagger documentation
-* JSON payroll persistence
-* Auto-incremented `payroll_id`
-* Auto-generated check numbers such as `001`, `002`, and `003`
-* Employee lookup by `employee_id`
-* Hourly wage pulled from EMS employee data
-* Payroll processing using only `employee_id` and `hours_worked`
+* Employee lookup by employee_id
+* Hourly wage retrieval from employee data
+* Payroll processing using employee_id and hours_worked
 * Regular hours calculation
 * Overtime hours calculation
 * Gross pay calculation
-* Deduction calculation
+* Payroll deduction calculation
 * Net pay calculation
+
+### Data Management
+
+* JSON payroll persistence
+* Auto-incrementing payroll_id values
+* Auto-generated payroll check numbers (001, 002, 003, etc.)
+
+### API Features
+
+* FastAPI backend
+* Swagger API documentation
 * GET all payroll records
 * GET payroll record by payroll ID
-* POST payroll processing route
+* POST payroll processing endpoint
 
-### API Routes
+## API Routes
 
-* `GET /`
-* `GET /payroll`
-* `GET /payroll/id/{payroll_id}`
-* `POST /payroll`
+```text
+GET /
+GET /payroll
+GET /payroll/id/{payroll_id}
+POST /payroll
+```
 
-### Example POST Request
+## Swagger Documentation
+
+```text
+http://localhost:8000/docs
+```
+
+## Example POST Request
 
 ```json
 {
@@ -102,12 +106,50 @@ Future versions will connect directly to EMS services.
 }
 ```
 
-### Next Enhancements
+## Example Response
+
+```json
+{
+    "message": "Payroll processed successfully"
+}
+```
+
+---
+
+# Architecture Notes
+
+The Payroll service is being developed as part of a larger Human Resource Management System (HRMS) SaaS platform.
+
+The production architecture separates functionality into individual modules while maintaining shared employee data across services.
+
+```text
+HRMS SaaS
+│
+├── Employee Management System
+├── Payroll
+├── Attendance & Scheduling
+└── Shared Services
+```
+
+To keep the public repository focused on payroll functionality, only the Payroll module and supporting demonstration data are included here.
+
+---
+
+# Future Enhancements
+
+## Payroll Enhancements
 
 * Deduction breakdown by line item
 * Search payroll by check number
-* Payroll reports
+* Payroll reporting endpoints
 * PATCH payroll records
 * DELETE payroll records
-* Attendance module
-* Shared HRMS/SaaS folder structure connecting EMS, Payroll, and future modules
+
+## HRMS Expansion
+
+* Attendance & Scheduling module
+* Shared service integration
+* Cross-module API communication
+* HRMS SaaS platform expansion
+
+
