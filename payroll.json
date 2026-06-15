@@ -24,5 +24,18 @@
         "gross_pay": 2099.5,
         "deductions": 541.46,
         "net_pay": 1558.04
+    },
+    {
+        "payroll_id": 3,
+        "check_number": "003",
+        "employee_id": 1002,
+        "name": "Ian Peace",
+        "hourly_wage": 55.25,
+        "hours_worked": 42.38,
+        "regular_hours": 40,
+        "overtime_hours": 2.3800000000000026,
+        "gross_pay": 2407.24,
+        "deductions": 620.83,
+        "net_pay": 1786.41
     }
 ]

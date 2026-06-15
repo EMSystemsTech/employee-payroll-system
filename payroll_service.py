@@ -1,8 +1,12 @@
 import json
 
+PAYROLL_FILE = "payroll.json"
+EMPLOYEES_FILE = "../Shared/data/employees.json"
+
+
 def load_payroll():
     try:
-        with open("payroll.json", "r") as file:
+        with open(PAYROLL_FILE, "r") as file:
             return json.load(file)
 
     except FileNotFoundError:
@@ -13,7 +17,7 @@ def load_payroll():
 
 
 def save_payroll(payroll):
-    with open("payroll.json", "w") as file:
+    with open(PAYROLL_FILE, "w") as file:
         json.dump(payroll, file, indent=4)
 
 
@@ -105,7 +109,7 @@ def create_payroll_record(employee, hours_worked):
 
 
 def get_employee_by_id(employee_id):
-    with open("employees.json", "r") as file:
+    with open(EMPLOYEES_FILE, "r") as file:
         employees = json.load(file)
 
     for employee in employees:
